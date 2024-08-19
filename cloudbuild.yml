@@ -1,0 +1,11 @@
+steps:
+- name: maven:3.8.7-openjdk-11
+  entrypoint: mvn
+  args: ['--initialize', '--file', 'Engine/pom.xml' ] 
+- name: maven:3.8.7-openjdk-11
+  entrypoint: mvn
+  args: ['--install', '--file', 'Engine/pom.xml' ]  
+- name: 'ubuntu'
+  args: ['chmod', '-R', '755', './' ]
+- name: 'ubuntu'
+  args: ['./Run.command', '-run', '-project_location', 'Projects/ING-Public-Web', '-release', 'Release1', '-testset', 'Set1' ]      
